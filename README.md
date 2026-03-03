@@ -42,23 +42,41 @@ classDiagram
     }
 
     class CaixaEletronico {
+        -Usuario u
+        -double valor
+        -Usuario destino
+        -Usuario origem
         +void sacarDinheiro(Usuario, double)
         +void depositarDinheiro(Usuario, double)
         +void transferirDinheiro(Usuario, Usuario, double)
     }
 
     class LoginController {
+        -Usuario u
+        -String cpf
+        -String senha
         +boolean logar(Usuario, String, String)
         +Usuario login(String, String)
     }
 
     class UsuarioController {
+        -String nome
+        -String cpf
+        -String senha
+        -double saldo
+        -long id
+        +void deletarUsuario(long)
+        +void retornarUsuario(long)
+        +long gerarId()
+        +void mostrarUsuario()
         +void criarUsuario(String, String)
     }
 
     class Criptografia {
-        +String hashPassword(String)
-        +boolean checkPassword(String, String)
+        -String senha
+        -String hash
+        +String CriptografarSenha(String)
+        +boolean verificarSenha(String, String)
     }
 
     Main --> UsuarioController
